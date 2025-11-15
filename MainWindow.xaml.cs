@@ -15,14 +15,38 @@ using System.Windows.Shapes;
 
 namespace Shop_Toshmatov
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
+        List<object> AllItems = Classes.RepoItems.AllItems();
+
         public MainWindow()
         {
             InitializeComponent();
+            if (parent == null)
+            {
+                MessageBox.Show("Элемент 'parent' не найден в XAML");
+                return;
+            }
+
+            if (AllItems == null || AllItems.Count == 0)
+            {
+                MessageBox.Show("Нет данных для отображения");
+                return;
+            }
+            CreateUI();
+        }
+        public void CreateUI()
+        {
+            if (AllItems == null) return;
+
+            if (parent == null) return;
+
+            foreach (object Item in AllItems)
+            {
+                if (Item == null) continue;
+
+                parent.Children.Add(new Elements.UserControl1(Item));
+            }
         }
     }
 }

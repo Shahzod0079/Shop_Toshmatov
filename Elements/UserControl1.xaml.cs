@@ -12,17 +12,29 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Shop_Toshmatov.Classes;
 
 namespace Shop_Toshmatov.Elements
 {
-    /// <summary>
-    /// Логика взаимодействия для UserControl1.xaml
-    /// </summary>
     public partial class UserControl1 : UserControl
     {
-        public UserControl1()
+        public UserControl1(object itemData)
         {
             InitializeComponent();
+
+            Classes.Shop ShopData = itemData as Classes.Shop;
+            tbName.Content = ShopData.Name;
+            tbPrice.Content = "Цена: " + ShopData.Price;
+            if (itemData is Classes.Children)
+            {
+                Classes.Children ChildrenData = itemData as Classes.Children;
+                tbCharacteristic.Content = "Возраст: " + ChildrenData.Age;
+            }
+            if (itemData is Classes.Sport)
+            {
+                Classes.Sport SportData = itemData as Classes.Sport;
+                tbCharacteristic.Content = "Размер: " + SportData.Size;
+            }
         }
     }
 }

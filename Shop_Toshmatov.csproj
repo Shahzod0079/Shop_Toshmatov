@@ -71,6 +71,8 @@
     <Compile Include="Classes\RepoItems.cs" />
     <Compile Include="Classes\Shop.cs" />
     <Compile Include="Classes\Sport.cs" />
+    <Compile Include="Elements\Item.cs" />
+    <Compile Include="Elements\Ttem.cs" />
     <Compile Include="Elements\UserControl1.xaml.cs">
       <DependentUpon>UserControl1.xaml</DependentUpon>
     </Compile>
